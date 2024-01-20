@@ -1,0 +1,106 @@
+class_name Player
+extends CharacterBody2D
+
+# Параметры
+export var speed: float = 100.0
+export var gravity: float = 14.0
+export var jump_strength: int = 220
+
+const FLOOR_HEIGHT: int = 16
+const FLOOR_RECT: Vector2 = Vector2(32, 32)
+
+# Контролируемые объекты
+onready var sprite: Node2D = $Appearance
+onready var shadow: Node2D = $Shadow
+onready var shadow_init_scale = shadow.scale.x
+
+# Отслеживаемые поверхности
+export var floor_paths: Array[NodePath]
+var floors: Array[TileMap]
+
+# Состояния персонажа
+var velocity: Vector2
+var vertical_velocity: float = 0.0
+
+var elevation: float = 0
+var is_jumping: bool = false
+
+var current_floor: int = -1
+
+func _ready():
+    if floor_paths.empty():
+        push_error("floor_paths персонажа не содержит путей к поверхностям сцены")
+    
+    # Преобразуем заданные пути к этажам в инспекторе в TileMap и добавляем в floors
+    for fl in floor_paths:
+        floors.append(get_node(fl) as TileMap)
+    
+    change_floor(0)
+
+func _process(_delta):
+    change_floor(int(elevation / FLOOR_HEIGHT))
+    get_jump_input()
+    draw_shadow()
+
+func _physics_process(delta):
+    velocity = get_movement_direction() * speed
+    velocity.y += gravity * delta
+    if is_jumping:
+        velocity.y = vertical_velocity
+    velocity = move_and_slide(velocity, Vector2.UP)
+    vertical_movement(delta)
+
+func get_movement_direction() -> Vector2:
+    return Vector2(
+        Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+        Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+    )
+
+func get_jump_input():
+    if not is_jumping and Input.is_action_just_pressed("jump"):
+        is_jumping = true
+        vertical_velocity = -jump_strength
+
+func vertical_movement(delta: float):
+    if not is_above_tile():
+        is_jumping = true
+
+    if is_jumping:
+        elevation += vertical_velocity * delta
+        vertical_velocity += gravity * delta
+
+        var current_floor_height: float = current_floor * FLOOR_HEIGHT
+        if elevation <= current_floor_height and is_above_tile():
+            is_jumping = false
+            elevation = current_floor_height
+            vertical_velocity = 0
+
+    sprite.position.y = -elevation
+
+func change_floor(index: int):
+    index = clamp(index, 0, floors.size() - 1)
+    if current_floor == index:
+        return
+    current_floor = index
+    collision_layer = 1 << index
+    collision_mask = 1 << index
+
+func is_above_tile() -> bool:
+    var tilemap: TileMap = floors[current_floor]
+    var cell_coords = tilemap.to_cell(global_position)
+    for direction in [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]:
+        var neighbor_coords = cell_coords + direction
+        if tilemap.is_cell_filled(neighbor_coords):
+            return true
+    return false
+
+func draw_shadow():
+    for i in floors.size() - 1, -1, -1:
+        var tilemap: TileMap = floors[i]
+        if tilemap.is_cell_filled(tilemap.to_cell(global_position)):
+            var a = shadow_init_scale - (elevation - (i * FLOOR_HEIGHT)) / 50
+            var shadow_scale = clamp(a, 0.2, shadow_init_scale)
+            shadow.scale = Vector2(shadow_scale, shadow_scale)
+            shadow.position.y = -i * FLOOR_HEIGHT
+            shadow.z_index = -int(shadow.position.y / FLOOR_HEIGHT)
+            return

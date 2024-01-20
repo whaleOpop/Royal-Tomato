@@ -1,7 +1,7 @@
 extends Camera2D
 
 @onready var player:Player=  $"../TomatoPrefab"
-@onready var marker=$"../TomatoPrefab".get_child(4).get_child(1)
+@onready var marker=$"../TomatoPrefab".get_child(4).get_child(0)
 
 var player_pos: Vector2
 var marker_pos: Vector2

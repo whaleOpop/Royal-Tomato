@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://l8vo5s1i0fh1"]
+
+[ext_resource type="Texture2D" uid="uid://btmcywnpp3v3n" path="res://scenes/Inventory/sprites/midlslot.png" id="1_3hyv5"]
+
+[node name="inv_UI_slot_midl" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1088.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Midlslot" type="Sprite2D" parent="."]
+texture = ExtResource("1_3hyv5")
+centered = false
