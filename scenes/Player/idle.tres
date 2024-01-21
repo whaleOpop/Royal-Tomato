@@ -1,7 +1,7 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bmhi4ph6e7fd2"]
 
-[ext_resource type="Texture2D" uid="uid://dqdxt6vsr6lc1" path="res://sprites/Anim/idle-Animation.png" id="1_0ael5"]
+[ext_resource type="Texture2D" uid="uid://dqdxt6vsr6lc1" path="res://sprites/Anim/idle-Animation.png" id="1_beprf"]
 
 [resource]
-atlas = ExtResource("1_0ael5")
+atlas = ExtResource("1_beprf")
 region = Rect2(704, 0, 32, 18)

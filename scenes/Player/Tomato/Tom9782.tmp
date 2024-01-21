@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://sprites/VFX/masking.gdshader" id="1_f1yo1"]
 [ext_resource type="Script" path="res://scenes/Player/Tomato/TomatoPrefab.gd" id="1_sj8sa"]
 [ext_resource type="PackedScene" uid="uid://11g6x5q6adr1" path="res://scenes/Inventory/InventoryPlayer.tscn" id="2_elupu"]
-[ext_resource type="Resource" uid="uid://ve40n06mfx6n" path="res://scenes/Inventory/inv_slots/inventory.tres" id="2_hlvke"]
+[ext_resource type="Resource" uid="uid://bo7ohylxrxodi" path="res://scenes/Inventory/int_items.tres" id="2_pv6ip"]
 [ext_resource type="Texture2D" uid="uid://dqdxt6vsr6lc1" path="res://sprites/Anim/idle-Animation.png" id="3_guw4h"]
 [ext_resource type="Texture2D" uid="uid://bmhi4ph6e7fd2" path="res://scenes/Player/idle.tres" id="4_qhw8x"]
 [ext_resource type="Texture2D" uid="uid://bcws0m0lv17l2" path="res://sprites/VFX/shadow.png" id="4_rly0b"]
@@ -1136,7 +1136,7 @@ floor_constant_speed = true
 script = ExtResource("1_sj8sa")
 speed = 300.0
 gravity = 31.0
-inv = ExtResource("2_hlvke")
+inv = ExtResource("2_pv6ip")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true

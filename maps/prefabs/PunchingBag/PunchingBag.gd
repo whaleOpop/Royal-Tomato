@@ -15,11 +15,14 @@ func _ready():
 	timer.connect("timeout",_on_Timer_timeout)
 	add_child(timer)
 	timer.start()
-	timerAnim=Timer.new()
 	
-	pass # Replace with function body.
-func _process(delta):
-	pass
+	timerAnim=Timer.new()
+	timerAnim.wait_time=1
+	timerAnim.one_shot=false
+	timerAnim.connect("timeout",_on_Timer_timeout_anim)
+	add_child(timerAnim)
+	
+
 
 func _on_Timer_timeout_anim():
 	sprite.play("idle")
@@ -36,10 +39,7 @@ func take_damage(damage):
 	label2.text=label.text
 	timerAnim.stop()
 	sprite.stop()
-	timerAnim.wait_time=1
-	timerAnim.one_shot=false
-	timerAnim.connect("timeout",_on_Timer_timeout_anim)
-	add_child(timerAnim)
+
 	sprite.play("hit")
 	timerAnim.start()
 	

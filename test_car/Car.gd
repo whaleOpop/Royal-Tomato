@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var anim:AnimatedSprite2D = $AnimatedSprite2D
+@onready var car_sprite:AnimatedSprite2D = $AnimatedSprite2D
 @onready var line:Line2D = $Line2D
 var wheel_base = 70
 var steering_angle = 15
@@ -55,14 +55,10 @@ func calculate_steering(delta):
 #	velocity = new_heading * velocity.length()
 	rotation = new_heading.angle()
 
-	var help = 7.34693877551
-	#var angle=rotation_rotation_degreess
-	var player_rotation = rotation
-	
-	var a = wrapi(int(player_rotation / (2*PI/49)), 0, 48)
-	anim.rotation=-rotation
-	print(a)
-	anim.frame=a
+	var car_rotation = rotation
+	var a = wrapi(int(car_rotation / (2*PI/49)), 0, 48)
+	car_sprite.rotation=-rotation
+	car_sprite.frame=a
 		
 	
 

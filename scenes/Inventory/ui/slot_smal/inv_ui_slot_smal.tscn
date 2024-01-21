@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://svl0nnm623jl"]
+
+[ext_resource type="PackedScene" uid="uid://dfl7coqsq10qp" path="res://scenes/Inventory/ui/slot_base/inv_ui_slot_base.tscn" id="1_ioouh"]
+[ext_resource type="Script" path="res://scenes/Inventory/ui/slot_smal/inv_ui_slot_smal.gd" id="2_4rpwr"]
+[ext_resource type="Texture2D" uid="uid://dqvlg8j0w474d" path="res://scenes/Inventory/sprites/smalslot.png" id="3_rmw3b"]
+[ext_resource type="FontFile" uid="uid://d17gpq4pmc6yt" path="res://fonts/ComicoroRu_0.ttf" id="4_frfqj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjja5"]
+
+[node name="inv_UI_slot_smal" instance=ExtResource("1_ioouh")]
+custom_minimum_size = Vector2(48, 48)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yjja5")
+script = ExtResource("2_4rpwr")
+
+[node name="item_background" parent="." index="0"]
+texture = ExtResource("3_rmw3b")
+
+[node name="CenterContainer" parent="." index="1"]
+custom_minimum_size = Vector2(48, 48)
+
+[node name="item_display" parent="CenterContainer/Panel" index="0"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="item_amount" type="Label" parent="CenterContainer/Panel" index="1"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("4_frfqj")
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 2

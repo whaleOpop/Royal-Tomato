@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfl7coqsq10qp"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/ui/slot_base/inv_ui_slot.gd" id="1_ptq4d"]
+
+[node name="inv_UI_slot_base" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1104.0
+offset_bottom = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptq4d")
+
+[node name="item_background" type="Sprite2D" parent="."]
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="item_display" type="TextureRect" parent="CenterContainer/Panel"]
+layout_mode = 0
+stretch_mode = 5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

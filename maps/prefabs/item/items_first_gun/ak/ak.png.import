@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wmgj6se7c58x"
-path="res://.godot/imported/ak.png-a187ef873b91dd142ea42d3970f99883.ctex"
+path="res://.godot/imported/ak.png-fbdbb6d7a0a48210a12264b961e8bd93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tiles/ak.png"
-dest_files=["res://.godot/imported/ak.png-a187ef873b91dd142ea42d3970f99883.ctex"]
+source_file="res://maps/prefabs/item/items_first_gun/ak/ak.png"
+dest_files=["res://.godot/imported/ak.png-fbdbb6d7a0a48210a12264b961e8bd93.ctex"]
 
 [params]
 

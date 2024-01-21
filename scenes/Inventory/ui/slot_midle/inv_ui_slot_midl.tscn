@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8e7iux1mgs3d"]
+
+[ext_resource type="PackedScene" uid="uid://dfl7coqsq10qp" path="res://scenes/Inventory/ui/slot_base/inv_ui_slot_base.tscn" id="1_g4uqq"]
+[ext_resource type="Script" path="res://scenes/Inventory/ui/slot_midle/inv_ui_slot_midl.gd" id="2_hfsr7"]
+[ext_resource type="Texture2D" uid="uid://btmcywnpp3v3n" path="res://scenes/Inventory/sprites/midlslot.png" id="3_stnvr"]
+[ext_resource type="FontFile" uid="uid://d17gpq4pmc6yt" path="res://fonts/ComicoroRu_0.ttf" id="4_ni4v6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6b60n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gshp"]
+
+[node name="inv_UI_slot_midl" instance=ExtResource("1_g4uqq")]
+custom_minimum_size = Vector2(64, 64)
+offset_right = -1088.0
+offset_bottom = -584.0
+script = ExtResource("2_hfsr7")
+
+[node name="item_background" parent="." index="0"]
+texture = ExtResource("3_stnvr")
+
+[node name="CenterContainer" parent="." index="1"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="item_durability" type="ProgressBar" parent="CenterContainer/Panel" index="0"]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 15.0
+offset_right = 19.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_ni4v6")
+theme_override_styles/background = SubResource("StyleBoxEmpty_6b60n")
+theme_override_styles/fill = SubResource("StyleBoxEmpty_7gshp")
+
+[node name="item_display" parent="CenterContainer/Panel" index="1"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2

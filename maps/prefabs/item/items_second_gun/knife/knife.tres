@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://bmy0laj0mgagl"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/scripts/inventory_item.gd" id="1_vvcgy"]
+[ext_resource type="Texture2D" uid="uid://d2kigmr0lilur" path="res://maps/prefabs/item/items.png" id="2_g2xgn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptssr"]
+atlas = ExtResource("2_g2xgn")
+region = Rect2(48, 0, 16, 32)
+
+[resource]
+script = ExtResource("1_vvcgy")
+name = ""
+texture = SubResource("AtlasTexture_ptssr")
+tag = "second_gun"

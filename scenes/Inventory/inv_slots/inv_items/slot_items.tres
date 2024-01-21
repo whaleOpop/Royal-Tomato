@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="Slots_items" load_steps=11 format=3 uid="uid://bspmfdoxbxio7"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/inv_slots/inv_items/slot_items.gd" id="1_pptlb"]
+[ext_resource type="Script" path="res://scenes/Inventory/scripts/Inv_slot.gd" id="2_llqbk"]
+
+[sub_resource type="Resource" id="Resource_rjxxr"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[sub_resource type="Resource" id="Resource_4s7au"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[sub_resource type="Resource" id="Resource_hxyro"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[sub_resource type="Resource" id="Resource_ibiwn"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[sub_resource type="Resource" id="Resource_b8iqf"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[sub_resource type="Resource" id="Resource_jpd8n"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[sub_resource type="Resource" id="Resource_wv0g8"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[sub_resource type="Resource" id="Resource_m7awv"]
+script = ExtResource("2_llqbk")
+amount = 0
+durability = 0
+
+[resource]
+script = ExtResource("1_pptlb")
+slots = Array[ExtResource("2_llqbk")]([SubResource("Resource_rjxxr"), SubResource("Resource_4s7au"), SubResource("Resource_hxyro"), SubResource("Resource_ibiwn"), SubResource("Resource_b8iqf"), SubResource("Resource_jpd8n"), SubResource("Resource_wv0g8"), SubResource("Resource_m7awv")])

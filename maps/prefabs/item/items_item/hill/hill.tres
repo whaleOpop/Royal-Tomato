@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://bqr2lgla6rjg6"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/scripts/inventory_item.gd" id="1_3a66s"]
+[ext_resource type="Texture2D" uid="uid://d2kigmr0lilur" path="res://maps/prefabs/item/items.png" id="2_whpfl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf4ja"]
+atlas = ExtResource("2_whpfl")
+region = Rect2(0, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_3a66s")
+name = ""
+texture = SubResource("AtlasTexture_qf4ja")
+tag = "item"

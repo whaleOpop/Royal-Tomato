@@ -6,7 +6,7 @@ class_name Player
 @export var gravity:float = 14.0
 @export var jump_strength :int= 220
 
-@export var inv:Inv
+@export var inv:Inventory
 
 
 
@@ -206,8 +206,13 @@ func _on_area_2d_body_entered(body):
 		pass # Replace with function body.
 
 
-func collect(item):
-	inv.insert(item)
-
+func collect(item:InvItem):
+	if (item.tag=="item"):
+		inv.slots[0].insert(item)
+	elif (item.tag=="helmet" or item.tag=="leggings" or item.tag=="boots"):
+		inv.slots[1].insert(item)
+	elif (item.tag=="first_gun" or item.tag=="second_gun" ):
+		inv.slots[2].insert(item)
+		
 func player():
 	pass

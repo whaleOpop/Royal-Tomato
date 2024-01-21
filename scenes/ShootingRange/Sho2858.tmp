@@ -1,15 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd7fpuicq8j1c"]
+[gd_scene load_steps=7 format=3 uid="uid://cd7fpuicq8j1c"]
 
 [ext_resource type="Script" path="res://scenes/Camera2D.gd" id="1_427sm"]
 [ext_resource type="TileSet" uid="uid://il6xrf6aelq8" path="res://sprites/tileset.tres" id="2_epwu5"]
-[ext_resource type="PackedScene" uid="uid://d3xrcya0yi6s3" path="res://maps/prefabs/item/items_first_gun/ak/drop_ak.tscn" id="5_68eka"]
-[ext_resource type="PackedScene" uid="uid://c4x2hwqggm3wb" path="res://maps/prefabs/item/items_helmet/lvl1/drop_helmet_lvl1.tscn" id="6_cr107"]
+[ext_resource type="Resource" uid="uid://ve40n06mfx6n" path="res://scenes/Inventory/inv_prefabs/inventory.tres" id="4_id3re"]
 [ext_resource type="PackedScene" uid="uid://c8cw41vejjso7" path="res://scenes/Player/Tomato/TomatoPrefab.tscn" id="7_bidfg"]
-[ext_resource type="PackedScene" uid="uid://bgxhbapui4xov" path="res://maps/prefabs/item/items_item/hill/drop_hill.tscn" id="7_m3u5p"]
-[ext_resource type="PackedScene" uid="uid://de72418ru0i7c" path="res://maps/prefabs/item/items_leggings/lvl1/drop_leggings_lvl1.tscn" id="8_c1xs4"]
 [ext_resource type="PackedScene" uid="uid://c75dlt1t0y7kq" path="res://maps/prefabs/PunchingBag/punching_bag.tscn" id="8_y0p6o"]
-[ext_resource type="PackedScene" uid="uid://der8cg0orhscs" path="res://maps/prefabs/item/items_second_gun/knife/drop_knife.tscn" id="9_oyswx"]
-[ext_resource type="PackedScene" uid="uid://de80ud74nne8p" path="res://maps/prefabs/item/item_boots/lvl1/drop_boots.tscn" id="10_5q4py"]
+[ext_resource type="PackedScene" uid="uid://c0cpg80t2ull0" path="res://maps/prefabs/drop_item/ak.tscn" id="10_6j2nu"]
 
 [node name="ShootingRange" type="Node2D"]
 y_sort_enabled = true
@@ -38,25 +34,14 @@ y_sort_enabled = true
 position = Vector2(315, 201)
 speed = 100.0
 gravity = 14.0
+inv = ExtResource("4_id3re")
 tilemaps = NodePath("../TileMap")
 
 [node name="PunchingBag" parent="." instance=ExtResource("8_y0p6o")]
 position = Vector2(207, 291)
 
-[node name="ItemBase" parent="." instance=ExtResource("5_68eka")]
-position = Vector2(69, 408)
+[node name="ak" parent="." instance=ExtResource("10_6j2nu")]
+position = Vector2(92, 296)
 
-[node name="ItemBase2" parent="." instance=ExtResource("6_cr107")]
-position = Vector2(134, 392)
-
-[node name="ItemBase3" parent="." instance=ExtResource("7_m3u5p")]
-position = Vector2(184, 398)
-
-[node name="ItemBase4" parent="." instance=ExtResource("8_c1xs4")]
-position = Vector2(225, 399)
-
-[node name="ItemBase5" parent="." instance=ExtResource("9_oyswx")]
-position = Vector2(266, 387)
-
-[node name="ItemBase6" parent="." instance=ExtResource("10_5q4py")]
-position = Vector2(308, 398)
+[node name="ak2" parent="." instance=ExtResource("10_6j2nu")]
+position = Vector2(232, 295)

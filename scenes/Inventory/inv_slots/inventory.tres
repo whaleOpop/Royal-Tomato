@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://ve40n06mfx6n"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/scripts/inventory.gd" id="1_7e7v4"]
+[ext_resource type="Resource" uid="uid://bspmfdoxbxio7" path="res://scenes/Inventory/inv_slots/inv_items/slot_items.tres" id="2_22g85"]
+[ext_resource type="Resource" uid="uid://dekjfx12hoqxa" path="res://scenes/Inventory/inv_slots/inv_armors/slot_armors.tres" id="3_wp1q0"]
+[ext_resource type="Resource" uid="uid://dj1qrw8odcpbp" path="res://scenes/Inventory/inv_slots/inv_guns/slot_guns.tres" id="4_eonee"]
+
+[resource]
+script = ExtResource("1_7e7v4")
+slots = Array[Resource("res://scenes/Inventory/scripts/slot_base.gd")]([ExtResource("2_22g85"), ExtResource("3_wp1q0"), ExtResource("4_eonee")])

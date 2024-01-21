@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://de80ud74nne8p"]
+
+[ext_resource type="PackedScene" uid="uid://dru3j2sl4o6wq" path="res://maps/prefabs/item/item_base/item_base.tscn" id="1_wvu1h"]
+[ext_resource type="Resource" uid="uid://bjjx1qj6djo3w" path="res://maps/prefabs/item/item_boots/lvl1/boots.tres" id="2_nkjis"]
+[ext_resource type="Texture2D" uid="uid://d2kigmr0lilur" path="res://maps/prefabs/item/items.png" id="2_qdkp4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78gdr"]
+atlas = ExtResource("2_qdkp4")
+region = Rect2(0, 0, 16, 16)
+
+[node name="ItemBase" instance=ExtResource("1_wvu1h")]
+item = ExtResource("2_nkjis")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_78gdr")
+
+[node name="CollisionShape2D" parent="pickable_area" index="0"]
+position = Vector2(8, 9)
