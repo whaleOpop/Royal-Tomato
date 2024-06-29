@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clxkxr7svhfbg"]
+
+[ext_resource type="Texture2D" uid="uid://du8borrx0ka41" path="res://scenes/Inventory/ui/inventory/slots/largest/backSlot.png" id="1_6rv1w"]
+[ext_resource type="Texture2D" uid="uid://be66cq1a53lpc" path="res://scenes/Inventory/ui/inventory/emptySlot.png" id="2_iug8d"]
+
+[node name="LargestSlot" type="Panel"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_6rv1w")
+offset = Vector2(48, 88)
+
+[node name="Item" type="Sprite2D" parent="."]
+texture = ExtResource("2_iug8d")
+offset = Vector2(48, 88)

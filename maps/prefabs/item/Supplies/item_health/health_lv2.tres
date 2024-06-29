@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://5xl1ap5g3jof"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/InventoryItem.gd" id="1_phvfc"]
+[ext_resource type="Texture2D" uid="uid://d2kigmr0lilur" path="res://maps/prefabs/item/items.png" id="2_v6iff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsxyc"]
+atlas = ExtResource("2_v6iff")
+region = Rect2(16, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_phvfc")
+name = "health_lv2"
+texture = SubResource("AtlasTexture_fsxyc")
+maxAmountStack = 3
+type = "Supplies"

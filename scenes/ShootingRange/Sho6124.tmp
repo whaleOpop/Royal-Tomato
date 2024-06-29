@@ -33,7 +33,7 @@ layer_2/tile_data = PackedInt32Array(524302, 196612, 3, 458766, 196612, 2)
 y_sort_enabled = true
 position = Vector2(247, 260)
 speed = 100.0
-gravity = 0.0
+gravity = 10.0
 tilemaps = NodePath("../TileMap")
 
 [node name="PunchingBag" parent="." instance=ExtResource("8_y0p6o")]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdta8ij4e7xpt"]
+
+[ext_resource type="PackedScene" uid="uid://d0u6nn1heue7c" path="res://scenes/Inventory/ui/inventory/slots/small/small_slot.tscn" id="1_2ac7b"]
+[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/InventoryPlayer.gd" id="1_p2skj"]
+[ext_resource type="PackedScene" uid="uid://oybps043228u" path="res://scenes/Inventory/ui/inventory/slots/midle/midle_slot.tscn" id="3_juov4"]
+[ext_resource type="PackedScene" uid="uid://clxkxr7svhfbg" path="res://scenes/Inventory/ui/inventory/slots/largest/largest_slot.tscn" id="3_n858y"]
+[ext_resource type="PackedScene" uid="uid://dq5jrgxe2k4ml" path="res://scenes/Inventory/ui/inventory/slots/large/large_slot.tscn" id="5_afjwg"]
+
+[node name="InventoryPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p2skj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 16
+
+[node name="MiddleContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_constants/v_separation = 16
+metadata/type = "Armor"
+
+[node name="MidleSlot" parent="NinePatchRect/HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
+layout_mode = 2
+
+[node name="MidleSlot2" parent="NinePatchRect/HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
+layout_mode = 2
+
+[node name="MidleSlot3" parent="NinePatchRect/HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
+layout_mode = 2
+
+[node name="LargestContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(96, 256)
+layout_mode = 2
+theme_override_constants/v_separation = 16
+
+[node name="LargestSlot" parent="NinePatchRect/HBoxContainer/LargestContainer" instance=ExtResource("3_n858y")]
+custom_minimum_size = Vector2(96, 176)
+layout_mode = 2
+
+[node name="SmallContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer/LargestContainer"]
+custom_minimum_size = Vector2(96, 64)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+metadata/type = "Supplies"
+
+[node name="SmallSlot" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+layout_mode = 2
+
+[node name="SmallSlot2" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+layout_mode = 2
+
+[node name="SmallSlot3" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+layout_mode = 2
+
+[node name="SmallSlot4" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+layout_mode = 2
+
+[node name="SmallSlot5" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+layout_mode = 2
+
+[node name="SmallSlot6" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+layout_mode = 2
+
+[node name="LargeContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 16
+metadata/type = "Guns"
+
+[node name="LargeSlot" parent="NinePatchRect/HBoxContainer/LargeContainer" instance=ExtResource("5_afjwg")]
+layout_mode = 2
+
+[node name="LargeSlot2" parent="NinePatchRect/HBoxContainer/LargeContainer" instance=ExtResource("5_afjwg")]
+layout_mode = 2

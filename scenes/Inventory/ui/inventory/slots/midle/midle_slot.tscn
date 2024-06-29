@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://oybps043228u"]
+
+[ext_resource type="Texture2D" uid="uid://buvcl550dx0bn" path="res://scenes/Inventory/ui/inventory/slots/midle/backSlot.png" id="1_qld8g"]
+[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/slots/small/small_slot.gd" id="1_rh6l0"]
+[ext_resource type="Texture2D" uid="uid://be66cq1a53lpc" path="res://scenes/Inventory/ui/inventory/emptySlot.png" id="2_u5ctm"]
+
+[node name="MidleSlot" type="Button"]
+custom_minimum_size = Vector2(48, 48)
+script = ExtResource("1_rh6l0")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_qld8g")
+offset = Vector2(24, 24)
+
+[node name="cross" type="Sprite2D" parent="."]
+texture = ExtResource("2_u5ctm")
+offset = Vector2(24, 24)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
