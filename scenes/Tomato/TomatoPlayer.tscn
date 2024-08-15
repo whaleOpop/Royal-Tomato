@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwl7x2rlqd0fn"]
+
+[ext_resource type="PackedScene" uid="uid://dd6jcd3tgfpcw" path="res://scenes/template_player/template_player.tscn" id="1_ujyj5"]
+
+[node name="Tomato" instance=ExtResource("1_ujyj5")]
+
+[node name="Camera3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3.1968, 4.18429)

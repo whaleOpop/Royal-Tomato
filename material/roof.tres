@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cih50bca8rjlu"]
+
+[resource]
+distance_fade_mode = 1
+distance_fade_max_distance = 15.0

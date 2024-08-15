@@ -5,7 +5,7 @@ signal opened
 signal closed
 var isOpen: bool = false
 
-@onready var inventory: Inventory = preload("res://scenes/Inventory/Inventory.tres")
+@onready var inventory: Inventory =preload("res://scenes/Inventory/ui/inventory/Inventory.tres")
 @onready var small_slots:Array = $NinePatchRect/HBoxContainer/LargestContainer/SmallContainer.get_children()
 @onready var middle_slots:Array = $NinePatchRect/HBoxContainer/MiddleContainer.get_children()
 @onready var large_slots:Array = $NinePatchRect/HBoxContainer/LargeContainer.get_children()

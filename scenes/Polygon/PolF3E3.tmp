@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjt1pogh5v7ya"]
+
+[ext_resource type="Script" path="res://Scenes/Polygon/Polygon.gd" id="1_ep2bc"]
+[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://sky_box/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_tmhli"]
+[ext_resource type="Material" uid="uid://ddogr4y6w6fpn" path="res://material/test_black8.tres" id="2_4nd7v"]
+[ext_resource type="PackedScene" uid="uid://bwl7x2rlqd0fn" path="res://Scenes/Tomato/TomatoPlayer.tscn" id="5_gbrow"]
+[ext_resource type="PackedScene" uid="uid://b3d5oenmnm3es" path="res://house.tscn" id="5_ydx3f"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3k4ma"]
+panorama = ExtResource("1_tmhli")
+
+[sub_resource type="Sky" id="Sky_j7yqg"]
+sky_material = SubResource("PanoramaSkyMaterial_3k4ma")
+
+[sub_resource type="Environment" id="Environment_fjepx"]
+background_mode = 2
+sky = SubResource("Sky_j7yqg")
+ambient_light_color = Color(1, 1, 1, 1)
+glow_bloom = 0.07
+fog_density = 0.0205
+fog_sky_affect = 0.442
+
+[node name="Polygon" type="Node3D"]
+script = ExtResource("1_ep2bc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fjepx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.686136, 0.727473, 0, -0.727473, 0.686136, -0.237055, 7.6025, 7.27394)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(50, 1, 50)
+material = ExtResource("2_4nd7v")
+
+[node name="house" parent="." instance=ExtResource("5_ydx3f")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 49.6759, 0, 0)
+
+[node name="Tomato" parent="." instance=ExtResource("5_gbrow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80834, 0.5, 2.18073)
+hp = 0
+armor = 0
+nickname = ""
+move_speed = 5.0
+turn_speed = 4.0
+ground_offset = 1.0

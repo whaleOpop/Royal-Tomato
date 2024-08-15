@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfh8coc842rel"]
+
+[ext_resource type="PackedScene" uid="uid://bjt1pogh5v7ya" path="res://scenes/Polygon/Polygon.tscn" id="1_g0j50"]
+[ext_resource type="Shader" path="res://scenes/Viewport/pixelart.gdshader" id="2_xlr6f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_si1ip"]
+shader = ExtResource("2_xlr6f")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0017
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 200.0
+shader_parameter/grainIntensity = 0.04
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.0
+
+[node name="PolygonViewport" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Polygon" parent="Control/SubViewportContainer/SubViewport" instance=ExtResource("1_g0j50")]
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control2"]
+visible = false
+material = SubResource("ShaderMaterial_si1ip")
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0

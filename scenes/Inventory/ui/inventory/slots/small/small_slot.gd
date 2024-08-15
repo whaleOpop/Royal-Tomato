@@ -3,7 +3,7 @@ extends Button
 @onready var backgroundSprite:Sprite2D = $Background
 @onready var container:CenterContainer = $CenterContainer
 
-@onready var inventory = preload("res://scenes/Inventory/Inventory.tres")
+@onready var inventory = preload("res://scenes/Inventory/ui/inventory/Inventory.tres")
 @onready var cross:Sprite2D=$cross
 var itemStackGui :ItemStackGui
 var index: int

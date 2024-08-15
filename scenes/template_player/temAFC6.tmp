@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx4e87t2s3vuy"]
+
+[ext_resource type="Script" path="res://Scenes/template_player/template_player.gd" id="1_qkj13"]
+[ext_resource type="PackedScene" uid="uid://6glhyro8bekf" path="res://Scenes/template_player/player.tscn" id="2_v23mx"]
+
+[node name="TemplatePlayer" type="Node3D" node_paths=PackedStringArray("legs")]
+script = ExtResource("1_qkj13")
+legs = NodePath("Legs")
+
+[node name="Legs" parent="." node_paths=PackedStringArray("camera_player") instance=ExtResource("2_v23mx")]
+camera_player = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+fov = 120.0
+size = 10.125

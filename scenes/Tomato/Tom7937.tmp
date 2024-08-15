@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwl7x2rlqd0fn"]
+
+[ext_resource type="PackedScene" uid="uid://cx4e87t2s3vuy" path="res://Scenes/template_player/template_player.tscn" id="1_ujyj5"]
+[ext_resource type="PackedScene" uid="uid://cxs3a00txsqgl" path="res://Models/tripo_convert_526ec2f9-5887-4feb-8200-e6e582e1d33d.glb" id="2_yx5h8"]
+
+[node name="TemplatePlayer" instance=ExtResource("1_ujyj5")]
+
+[node name="Legs" parent="." index="0"]
+camera_bob_speed = 0.0
+
+[node name="TomatoModel" parent="Legs" index="6" instance=ExtResource("2_yx5h8")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0)
+
+[node name="StaticBody3D" parent="Legs" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.577825, 0)
+
+[node name="Camera3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)

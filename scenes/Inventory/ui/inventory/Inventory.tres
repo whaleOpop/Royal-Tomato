@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://cxi1ck4f7glaf"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/Inventory.gd" id="1_0nhvo"]
+
+[resource]
+script = ExtResource("1_0nhvo")
+supplies_slots = Array[Resource("res://scenes/Inventory/ui/inventory/model/InventorySlot.gd")]([])
+armors_slots = Array[Resource("res://scenes/Inventory/ui/inventory/model/InventorySlot.gd")]([])
+guns_slots = Array[Resource("res://scenes/Inventory/ui/inventory/model/InventorySlot.gd")]([])
