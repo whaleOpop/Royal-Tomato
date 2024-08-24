@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmoymu2bo3qma"]
+
+[ext_resource type="PackedScene" uid="uid://u0dluvjwg0a8" path="res://Models/guns/blasterR.glb" id="1_2ye8k"]
+
+[node name="blasterR2" instance=ExtResource("1_2ye8k")]
+
+[node name="blasterR" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

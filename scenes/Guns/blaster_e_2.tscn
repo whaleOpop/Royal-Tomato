@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8jov7c2aaqc7"]
+
+[ext_resource type="PackedScene" uid="uid://divq5deo0qnwx" path="res://Models/guns/blasterE.glb" id="1_hs6fq"]
+
+[node name="blasterE2" instance=ExtResource("1_hs6fq")]
