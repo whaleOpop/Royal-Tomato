@@ -1,64 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://dd6jcd3tgfpcw"]
+[gd_scene load_steps=17 format=3 uid="uid://dd6jcd3tgfpcw"]
 
 [ext_resource type="Texture2D" uid="uid://b5081glkfwibl" path="res://textures/sprites/Tomat/tomatoSprite.png" id="1_j66mn"]
 [ext_resource type="Script" path="res://scenes/template_player/CharacterBody3D.gd" id="1_oe50t"]
 [ext_resource type="Texture2D" uid="uid://dcpaimd0qdj35" path="res://textures/sprites/Tomat/anim_idle.png" id="2_1n6m6"]
 [ext_resource type="Texture2D" uid="uid://b2g7is323ayeg" path="res://textures/sprites/Tomat/anim_tomato_run.png" id="2_35t7j"]
-[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/InventorySlot.gd" id="2_atsfd"]
-[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/Inventory.gd" id="3_4dirj"]
 [ext_resource type="Texture2D" uid="uid://c0qerkmbtydkx" path="res://textures/sprites/Tomat/eyes.png" id="4_kuecs"]
 [ext_resource type="Texture2D" uid="uid://djkbwkasi8d6o" path="res://textures/sprites/Tomat/mouse.png" id="4_vi6ru"]
 [ext_resource type="PackedScene" uid="uid://cdta8ij4e7xpt" path="res://scenes/Inventory/ui/inventory/InventoryPlayer.tscn" id="7_u5nvg"]
-
-[sub_resource type="Resource" id="Resource_42wcc"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_ya7to"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_b0l6f"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_frmvy"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_mmacp"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_mr0g1"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_6lbu6"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_ou0w5"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_6sikv"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_yqw4s"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_clbse"]
-script = ExtResource("2_atsfd")
-amount = 0
-
-[sub_resource type="Resource" id="Resource_6tef8"]
-script = ExtResource("3_4dirj")
-supplies_slots = Array[ExtResource("2_atsfd")]([SubResource("Resource_mr0g1"), SubResource("Resource_6lbu6"), SubResource("Resource_ou0w5"), SubResource("Resource_6sikv"), SubResource("Resource_yqw4s"), SubResource("Resource_clbse")])
-armors_slots = Array[ExtResource("2_atsfd")]([SubResource("Resource_42wcc"), SubResource("Resource_ya7to"), SubResource("Resource_b0l6f")])
-guns_slots = Array[ExtResource("2_atsfd")]([SubResource("Resource_frmvy"), SubResource("Resource_mmacp")])
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43irl"]
 height = 1.15449
@@ -481,6 +429,8 @@ _data = {
 "TEST": SubResource("Animation_w0lyg")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_rg1sy"]
+
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
@@ -490,7 +440,6 @@ camera = NodePath("../Camera3D")
 camera_offset = Vector3(0, 10, 10)
 SPEED = 10.0
 JUMP_VELOCITY = 10.0
-inventory = SubResource("Resource_6tef8")
 
 [node name="Head" type="Sprite3D" parent="TemplatePlayer"]
 process_priority = 1
@@ -531,21 +480,31 @@ libraries = {
 "": SubResource("AnimationLibrary_6xf0u")
 }
 
+[node name="Hand" type="Node3D" parent="TemplatePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458892, 0, 0.398338)
+
+[node name="PickUp" type="Area3D" parent="TemplatePlayer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TemplatePlayer/PickUp"]
+shape = SubResource("SphereShape3D_rg1sy")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-size = 10.125
+size = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryPlayer" parent="CanvasLayer" instance=ExtResource("7_u5nvg")]
 visible = false
-offset_left = -227.0
-offset_top = -208.0
-offset_right = -227.0
-offset_bottom = -208.0
+offset_left = -136.0
+offset_top = -128.0
+offset_right = 136.0
+offset_bottom = 128.0
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[connection signal="area_entered" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_entered"]
+[connection signal="area_exited" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_exited"]
 [connection signal="closed" from="CanvasLayer/InventoryPlayer" to="TemplatePlayer" method="_on_inventory_player_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryPlayer" to="TemplatePlayer" method="_on_inventory_player_opened"]
