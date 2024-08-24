@@ -1,9 +1,54 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://cxi1ck4f7glaf"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=14 format=3 uid="uid://cxi1ck4f7glaf"]
 
 [ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/Inventory.gd" id="1_0nhvo"]
+[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/InventorySlot.gd" id="1_f0dk5"]
+
+[sub_resource type="Resource" id="Resource_7edcr"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_aitin"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_gve7w"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_q3o51"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_ag31r"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_j2h0f"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_f7m7k"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_3s6wl"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_ej5ud"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_vp0da"]
+script = ExtResource("1_f0dk5")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_1rlkk"]
+script = ExtResource("1_f0dk5")
+amount = 0
 
 [resource]
 script = ExtResource("1_0nhvo")
-supplies_slots = Array[Resource("res://scenes/Inventory/ui/inventory/model/InventorySlot.gd")]([])
-armors_slots = Array[Resource("res://scenes/Inventory/ui/inventory/model/InventorySlot.gd")]([])
-guns_slots = Array[Resource("res://scenes/Inventory/ui/inventory/model/InventorySlot.gd")]([])
+supplies_slots = Array[ExtResource("1_f0dk5")]([SubResource("Resource_j2h0f"), SubResource("Resource_f7m7k"), SubResource("Resource_3s6wl"), SubResource("Resource_ej5ud"), SubResource("Resource_vp0da"), SubResource("Resource_1rlkk")])
+armors_slots = Array[ExtResource("1_f0dk5")]([SubResource("Resource_7edcr"), SubResource("Resource_aitin"), SubResource("Resource_gve7w")])
+guns_slots = Array[ExtResource("1_f0dk5")]([SubResource("Resource_q3o51"), SubResource("Resource_ag31r")])
