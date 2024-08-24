@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dq5jrgxe2k4ml" path="res://scenes/Inventory/ui/inventory/slots/large/large_slot.tscn" id="5_afjwg"]
 
 [node name="InventoryPlayer" type="Control"]
+custom_minimum_size = Vector2(272, 256)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
