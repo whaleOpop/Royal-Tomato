@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjt1pogh5v7ya"]
+[gd_scene load_steps=14 format=3 uid="uid://bjt1pogh5v7ya"]
 
 [ext_resource type="Script" path="res://scenes/Polygon/Polygon.gd" id="1_ep2bc"]
 [ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://sky_box/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_tmhli"]
 [ext_resource type="Material" uid="uid://ddogr4y6w6fpn" path="res://material/test_black8.tres" id="2_4nd7v"]
 [ext_resource type="PackedScene" uid="uid://dd6jcd3tgfpcw" path="res://scenes/template_player/template_player.tscn" id="5_g1eki"]
 [ext_resource type="PackedScene" uid="uid://b3d5oenmnm3es" path="res://house.tscn" id="5_ydx3f"]
+[ext_resource type="PackedScene" uid="uid://b5wvvhqrkm0sx" path="res://scenes/items/Aid_kit/Aid_kit.tscn" id="6_b8svu"]
+[ext_resource type="PackedScene" uid="uid://cbmtsiouubpf7" path="res://scenes/items/blasterB/blaster_b.tscn" id="7_sjowl"]
+[ext_resource type="PackedScene" uid="uid://g3e4a1t8yubu" path="res://scenes/items/blasterL/blaster_l.tscn" id="8_k0nt7"]
+[ext_resource type="PackedScene" uid="uid://l2igh3kpnhhd" path="res://scenes/items/blasterG/blaster_g.tscn" id="9_mohvb"]
+[ext_resource type="PackedScene" uid="uid://8be0cf4c2geh" path="res://scenes/items/blasterP/blaster_p.tscn" id="10_ussu6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3k4ma"]
 panorama = ExtResource("1_tmhli")
@@ -16,6 +21,7 @@ sky_material = SubResource("PanoramaSkyMaterial_3k4ma")
 background_mode = 2
 sky = SubResource("Sky_j7yqg")
 ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.07
@@ -29,7 +35,10 @@ script = ExtResource("1_ep2bc")
 environment = SubResource("Environment_fjepx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.686136, 0.727473, 0, -0.727473, 0.686136, -0.237055, 7.6025, 7.27394)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.73947, 27.467, 26.0097)
+shadow_enabled = true
+shadow_blur = 1.3
+directional_shadow_blend_splits = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
@@ -41,3 +50,18 @@ transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 49.675
 
 [node name="TemplatePlayer" parent="." instance=ExtResource("5_g1eki")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.60156, 5.43505, -1.97326)
+
+[node name="Node3D" parent="." instance=ExtResource("6_b8svu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872731, 1.67668, 0.319316)
+
+[node name="blasterB" parent="." instance=ExtResource("7_sjowl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -1)
+
+[node name="blasterL" parent="." instance=ExtResource("8_k0nt7")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -9.74097, 0.5, -0.753748)
+
+[node name="blasterG" parent="." instance=ExtResource("9_mohvb")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -15.486, 0.5, -0.904348)
+
+[node name="blasterP" parent="." instance=ExtResource("10_ussu6")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.47299, 0.5, -4.85605)
