@@ -1,5 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cih50bca8rjlu"]
 
 [resource]
+proximity_fade_enabled = true
 distance_fade_mode = 1
-distance_fade_max_distance = 15.0
+distance_fade_min_distance = 5.0
+distance_fade_max_distance = 21.0
