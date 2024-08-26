@@ -6,3 +6,4 @@ class_name InventoryItem
 @export var texture: Texture2D
 @export var maxAmountStack:int
 @export var type:String
+@export var scene: PackedScene
