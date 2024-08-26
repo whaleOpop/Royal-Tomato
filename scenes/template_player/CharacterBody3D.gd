@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var camera_offset: Vector3 = Vector3(0, 2, -5)
 
 @export var SPEED = 5.0
-@export var JUMP_VELOCITY = 4.5
+@export var JUMP_VELOCITY = 15
 @export var CAMERA_SMOOTHING = 5.0
 @onready var inventory: Inventory =preload("res://scenes/Inventory/ui/inventory/Inventory.tres")
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -15,6 +15,9 @@ var state_machine
 var current_state
 
 func _ready():
+
+	add_to_group("player")
+
 	state_machine = {
 		"IDLE": IdleState.new(),
 		"RUN_UP": RunUpState.new(),
@@ -40,10 +43,11 @@ func _process(delta):
 		var current_position = camera.global_transform.origin
 		var new_position = current_position.lerp(target_position, CAMERA_SMOOTHING * delta)
 		camera.global_transform.origin = new_position
-
+	
 	# Update the current state
 	if current_state:
 		current_state.update(self, delta)
+		
 	
 	# Rotate character towards the mouse position
 	
@@ -54,6 +58,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	if current_state != state_machine["INVENTORY"]:
+		
 		if not is_on_floor():
 			velocity.y -= gravity * delta
 		if Input.is_action_just_pressed("camera_left"):
@@ -74,17 +79,10 @@ func _physics_process(delta):
 
 		var direction = (forward * input_dir.y + right * input_dir.x).normalized()
 		if Input.is_action_just_pressed("num_1"):
-			if inventory.guns_slots[0]!=null:
-				if hand.get_child(0)!=null:
-					hand.get_child(0).queue_free()
-					
-				#hand.add_child()
-			else:
-				hand.get_child(0).queue_free()
-		if Input.is_action_just_pressed("num_2"):
-			if inventory.guns_slots[0]!=null:
-				if hand.get_child(0)!=null:
-					hand.get_child(0).queue_free()
+			_switch_weapon(0)
+
+		elif Input.is_action_just_pressed("num_2"):
+			_switch_weapon(1)
 			
 		if direction != Vector3.ZERO:
 			velocity.x = direction.x * SPEED
@@ -164,9 +162,11 @@ func toggle_inventory():
 		change_state("INVENTORY")  # Enter InventoryState
 
 func _on_inventory_player_closed():
+	
 	pass
 
 func _on_inventory_player_opened():
+	
 	pass
 
 
@@ -181,3 +181,15 @@ func _on_pick_up_area_entered(area: Area3D) -> void:
 func _on_pick_up_area_exited(area: Area3D) -> void:
 	
 	pass # Replace with function body.
+	
+func _switch_weapon(slot_index):
+	# Удаляем текущее оружие из руки, если оно есть
+	if hand.get_child_count() > 0:
+		hand.get_child(0).queue_free()
+	
+	# Проверяем наличие слота и оружия в нем
+	if inventory.guns_slots.size() > slot_index and inventory.guns_slots[slot_index].item != null:
+		var gun = inventory.guns_slots[slot_index].item.scene.instantiate()
+		gun.rotation_degrees.y=180
+		hand.add_child(gun)
+		
