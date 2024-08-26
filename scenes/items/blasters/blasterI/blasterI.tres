@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://du0gglbd8s2xk"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/InventoryItem.gd" id="1_ghxt5"]
+[ext_resource type="PackedScene" uid="uid://btshmd3dyojgg" path="res://scenes/Guns/blaster_i_2.tscn" id="1_lrd8y"]
+[ext_resource type="Texture2D" uid="uid://jee5x2g0384r" path="res://scenes/items/Texture/guns.png" id="2_5yj5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tn1t"]
+atlas = ExtResource("2_5yj5p")
+region = Rect2(3399, 1399, 370, 274)
+
+[resource]
+script = ExtResource("1_ghxt5")
+name = "blasterI"
+texture = SubResource("AtlasTexture_7tn1t")
+maxAmountStack = 1
+type = "Guns"
+scene = ExtResource("1_lrd8y")

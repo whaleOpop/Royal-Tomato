@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://corxrwfbyfx4x"]
+
+[ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/model/InventoryItem.gd" id="1_6ue8o"]
+[ext_resource type="PackedScene" uid="uid://bk31kt63yyihn" path="res://scenes/Guns/blaster_j_2.tscn" id="1_vrc5u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ogjx7"]
+load_path = "res://.godot/imported/guns.png-cdb8a525cddd2199316592104be5f211.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqao1"]
+atlas = SubResource("CompressedTexture2D_ogjx7")
+region = Rect2(4411, 1409, 397, 254)
+
+[resource]
+script = ExtResource("1_6ue8o")
+name = "blasterJ"
+texture = SubResource("AtlasTexture_gqao1")
+maxAmountStack = 1
+type = "Guns"
+scene = ExtResource("1_vrc5u")
