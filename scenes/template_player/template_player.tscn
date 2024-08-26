@@ -439,7 +439,6 @@ script = ExtResource("1_oe50t")
 camera = NodePath("../Camera3D")
 camera_offset = Vector3(0, 10, 10)
 SPEED = 10.0
-JUMP_VELOCITY = 10.0
 
 [node name="Head" type="Sprite3D" parent="TemplatePlayer"]
 process_priority = 1
