@@ -14,46 +14,45 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -128.0
+offset_right = 136.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p2skj")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 272.0
+offset_bottom = 256.0
 theme_override_constants/separation = 16
 
-[node name="MiddleContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer"]
+[node name="MiddleContainer" type="GridContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 theme_override_constants/v_separation = 16
 metadata/type = "Armor"
 
-[node name="MidleSlot" parent="NinePatchRect/HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
+[node name="MidleSlot" parent="HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
 layout_mode = 2
 
-[node name="MidleSlot2" parent="NinePatchRect/HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
+[node name="MidleSlot2" parent="HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
 layout_mode = 2
 
-[node name="MidleSlot3" parent="NinePatchRect/HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
+[node name="MidleSlot3" parent="HBoxContainer/MiddleContainer" instance=ExtResource("3_juov4")]
 layout_mode = 2
 
-[node name="LargestContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer"]
+[node name="LargestContainer" type="GridContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(96, 256)
 layout_mode = 2
 theme_override_constants/v_separation = 16
 
-[node name="LargestSlot" parent="NinePatchRect/HBoxContainer/LargestContainer" instance=ExtResource("3_n858y")]
+[node name="LargestSlot" parent="HBoxContainer/LargestContainer" instance=ExtResource("3_n858y")]
 custom_minimum_size = Vector2(96, 176)
 layout_mode = 2
 
-[node name="SmallContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer/LargestContainer"]
+[node name="SmallContainer" type="GridContainer" parent="HBoxContainer/LargestContainer"]
 custom_minimum_size = Vector2(96, 64)
 layout_mode = 2
 theme_override_constants/h_separation = 0
@@ -61,31 +60,31 @@ theme_override_constants/v_separation = 0
 columns = 3
 metadata/type = "Supplies"
 
-[node name="SmallSlot" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+[node name="SmallSlot" parent="HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
 layout_mode = 2
 
-[node name="SmallSlot2" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+[node name="SmallSlot2" parent="HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
 layout_mode = 2
 
-[node name="SmallSlot3" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+[node name="SmallSlot3" parent="HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
 layout_mode = 2
 
-[node name="SmallSlot4" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+[node name="SmallSlot4" parent="HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
 layout_mode = 2
 
-[node name="SmallSlot5" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+[node name="SmallSlot5" parent="HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
 layout_mode = 2
 
-[node name="SmallSlot6" parent="NinePatchRect/HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
+[node name="SmallSlot6" parent="HBoxContainer/LargestContainer/SmallContainer" instance=ExtResource("1_2ac7b")]
 layout_mode = 2
 
-[node name="LargeContainer" type="GridContainer" parent="NinePatchRect/HBoxContainer"]
+[node name="LargeContainer" type="GridContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/v_separation = 16
 metadata/type = "Guns"
 
-[node name="LargeSlot" parent="NinePatchRect/HBoxContainer/LargeContainer" instance=ExtResource("5_afjwg")]
+[node name="LargeSlot" parent="HBoxContainer/LargeContainer" instance=ExtResource("5_afjwg")]
 layout_mode = 2
 
-[node name="LargeSlot2" parent="NinePatchRect/HBoxContainer/LargeContainer" instance=ExtResource("5_afjwg")]
+[node name="LargeSlot2" parent="HBoxContainer/LargeContainer" instance=ExtResource("5_afjwg")]
 layout_mode = 2

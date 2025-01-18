@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://bjt1pogh5v7ya"]
 
-[ext_resource type="Script" path="res://scenes/Polygon/Polygon.gd" id="1_ep2bc"]
 [ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://sky_box/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_tmhli"]
+[ext_resource type="Script" path="res://scenes/Polygon/level.gd" id="1_x1baw"]
 [ext_resource type="Material" uid="uid://ddogr4y6w6fpn" path="res://material/test_black8.tres" id="2_4nd7v"]
-[ext_resource type="PackedScene" uid="uid://dd6jcd3tgfpcw" path="res://scenes/template_player/template_player.tscn" id="5_g1eki"]
 [ext_resource type="PackedScene" uid="uid://b3d5oenmnm3es" path="res://house.tscn" id="5_ydx3f"]
 [ext_resource type="PackedScene" uid="uid://b5wvvhqrkm0sx" path="res://scenes/items/Aid_kit/Aid_kit.tscn" id="6_b8svu"]
 [ext_resource type="PackedScene" uid="uid://cbmtsiouubpf7" path="res://scenes/items/blasters/blasterB/blaster_b.tscn" id="7_sjowl"]
 [ext_resource type="PackedScene" uid="uid://dbyr6bnb7vpcw" path="res://scenes/items/blasters/blasterA/blaster_a.tscn" id="8_liobu"]
+[ext_resource type="PackedScene" uid="uid://dg8sh3njjjf5p" path="res://scenes/items/Ammo/green/green_ammo.tscn" id="9_a7r5b"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3k4ma"]
 panorama = ExtResource("1_tmhli")
@@ -27,7 +27,7 @@ fog_density = 0.0205
 fog_sky_affect = 0.442
 
 [node name="Polygon" type="Node3D"]
-script = ExtResource("1_ep2bc")
+script = ExtResource("1_x1baw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fjepx")
@@ -46,14 +46,23 @@ material = ExtResource("2_4nd7v")
 [node name="house" parent="." instance=ExtResource("5_ydx3f")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 49.6759, 0, 0)
 
-[node name="TemplatePlayer" parent="." instance=ExtResource("5_g1eki")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.60156, 5.43505, -1.97326)
+[node name="Players" type="Node3D" parent="."]
 
-[node name="Node3D" parent="." instance=ExtResource("6_b8svu")]
+[node name="Items" type="Node3D" parent="."]
+
+[node name="Node3D" parent="Items" instance=ExtResource("6_b8svu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872731, 1.67668, 0.319316)
 
-[node name="blasterB" parent="." instance=ExtResource("7_sjowl")]
+[node name="blasterB" parent="Items" instance=ExtResource("7_sjowl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.18485, -1)
 
-[node name="blasterA" parent="." instance=ExtResource("8_liobu")]
+[node name="blasterA" parent="Items" instance=ExtResource("8_liobu")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -7.13433, 2.24151, 2.80533)
+
+[node name="green_ammo2" parent="Items" instance=ExtResource("9_a7r5b")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.73486, 1.56274, 3.40156)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/template_player/template_player.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 4

@@ -436,18 +436,6 @@ _data = {
 properties/0/path = NodePath(".:direction")
 properties/0/spawn = false
 properties/0/replication_mode = 1
-properties/1/path = NodePath(".:weapon_slot")
-properties/1/spawn = false
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:mouse_position")
-properties/2/spawn = false
-properties/2/replication_mode = 1
-properties/3/path = NodePath(".:hand_rotation")
-properties/3/spawn = false
-properties/3/replication_mode = 1
-properties/4/path = NodePath(".:inventory_open")
-properties/4/spawn = false
-properties/4/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ixyqm"]
 properties/0/path = NodePath("TemplatePlayer:player")
@@ -489,9 +477,6 @@ properties/11/replication_mode = 1
 properties/12/path = NodePath("TemplatePlayer/Hand:position")
 properties/12/spawn = true
 properties/12/replication_mode = 1
-properties/13/path = NodePath("TemplatePlayer/Hand:scale")
-properties/13/spawn = true
-properties/13/replication_mode = 1
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -556,11 +541,18 @@ script = ExtResource("8_ktc0j")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+visible = false
 size = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryPlayer" parent="CanvasLayer" instance=ExtResource("7_u5nvg")]
+visible = false
+offset_left = -136.0
+offset_top = -128.0
+offset_right = 136.0
+offset_bottom = 128.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -569,3 +561,5 @@ replication_config = SubResource("SceneReplicationConfig_ixyqm")
 
 [connection signal="area_entered" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_entered"]
 [connection signal="area_exited" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_exited"]
+[connection signal="closed" from="CanvasLayer/InventoryPlayer" to="TemplatePlayer" method="_on_inventory_player_closed"]
+[connection signal="opened" from="CanvasLayer/InventoryPlayer" to="TemplatePlayer" method="_on_inventory_player_opened"]

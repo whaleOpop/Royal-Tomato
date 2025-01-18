@@ -496,11 +496,14 @@ properties/13/replication_mode = 1
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="TemplatePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("CAMERA")]
+[node name="TemplatePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("1_oe50t")
-CAMERA = NodePath("../Camera3D")
+camera = NodePath("../Camera3D")
 camera_offset = Vector3(0, 10, 10)
 SPEED = 10.0
+JUMP_VELOCITY = null
+CAMERA_SMOOTHING = null
+player = null
 
 [node name="Head" type="Sprite3D" parent="TemplatePlayer"]
 process_priority = 1
@@ -561,6 +564,12 @@ size = 20.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryPlayer" parent="CanvasLayer" instance=ExtResource("7_u5nvg")]
+visible = false
+offset_left = -136.0
+offset_top = -128.0
+offset_right = 136.0
+offset_bottom = 128.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 

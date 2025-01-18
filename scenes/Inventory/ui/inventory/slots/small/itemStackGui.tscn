@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7ok2gk2ir7vc"]
+[gd_scene load_steps=6 format=3 uid="uid://c7ok2gk2ir7vc"]
 
 [ext_resource type="Script" path="res://scenes/Inventory/ui/inventory/slots/small/itemStackGui.gd" id="1_sbo0k"]
 [ext_resource type="Texture2D" uid="uid://be66cq1a53lpc" path="res://scenes/Inventory/ui/inventory/emptySlot.png" id="2_2rftt"]
+[ext_resource type="FontFile" uid="uid://c33dfmpahm5a4" path="res://fonts/PixelRPG.ttf" id="3_8vooa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yatc"]
 
@@ -22,5 +23,7 @@ texture_filter = 3
 layout_mode = 0
 offset_right = 15.0
 offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_8vooa")
+theme_override_font_sizes/font_size = 0
 text = "99"
 horizontal_alignment = 2

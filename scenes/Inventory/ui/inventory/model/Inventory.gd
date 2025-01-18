@@ -10,6 +10,8 @@ signal inventory_guns_full
 @export var armors_slots: Array[InventorySlot]
 @export var guns_slots: Array[InventorySlot]
 
+
+
 func insertSupplies(item: InventoryItem):
 	var itemSlots = supplies_slots.filter(func(slot): return slot.item == item)
 	if !itemSlots.is_empty():

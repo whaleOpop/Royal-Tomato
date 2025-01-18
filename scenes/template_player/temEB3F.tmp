@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://pjm7jnwaysd4"]
+[gd_scene load_steps=20 format=3 uid="uid://dd6jcd3tgfpcw"]
 
 [ext_resource type="Texture2D" uid="uid://b5081glkfwibl" path="res://textures/sprites/Tomat/tomatoSprite.png" id="1_j66mn"]
 [ext_resource type="Script" path="res://scenes/template_player/CharacterBody3D.gd" id="1_oe50t"]
@@ -432,37 +432,20 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rg1sy"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fcge4"]
-properties/0/path = NodePath(".:direction")
-properties/0/spawn = false
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:weapon_slot")
-properties/1/spawn = false
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:mouse_position")
-properties/2/spawn = false
-properties/2/replication_mode = 1
-properties/3/path = NodePath(".:hand_rotation")
-properties/3/spawn = false
-properties/3/replication_mode = 1
-properties/4/path = NodePath(".:inventory_open")
-properties/4/spawn = false
-properties/4/replication_mode = 1
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ixyqm"]
-properties/0/path = NodePath("TemplatePlayer:player")
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lx0wk"]
+properties/0/path = NodePath(".:velocity")
 properties/0/spawn = true
-properties/0/replication_mode = 0
-properties/1/path = NodePath("TemplatePlayer:position")
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:player")
 properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("TemplatePlayer:rotation")
+properties/1/replication_mode = 0
+properties/2/path = NodePath(".:position")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("TemplatePlayer:scale")
+properties/3/path = NodePath("../Camera3D:rotation")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-properties/4/path = NodePath(".:position")
+properties/4/path = NodePath("../Camera3D:position")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 properties/5/path = NodePath(".:rotation")
@@ -471,34 +454,18 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath(".:scale")
 properties/6/spawn = true
 properties/6/replication_mode = 1
-properties/7/path = NodePath("Camera3D:position")
-properties/7/spawn = true
-properties/7/replication_mode = 1
-properties/8/path = NodePath("Camera3D:rotation")
-properties/8/spawn = true
-properties/8/replication_mode = 1
-properties/9/path = NodePath("TemplatePlayer:velocity")
-properties/9/spawn = true
-properties/9/replication_mode = 1
-properties/10/path = NodePath("Camera3D:global_transform")
-properties/10/spawn = true
-properties/10/replication_mode = 1
-properties/11/path = NodePath("TemplatePlayer/Hand:rotation")
-properties/11/spawn = true
-properties/11/replication_mode = 1
-properties/12/path = NodePath("TemplatePlayer/Hand:position")
-properties/12/spawn = true
-properties/12/replication_mode = 1
-properties/13/path = NodePath("TemplatePlayer/Hand:scale")
-properties/13/spawn = true
-properties/13/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pfkvo"]
+properties/0/path = NodePath(".:input_direction")
+properties/0/spawn = false
+properties/0/replication_mode = 1
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="TemplatePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("CAMERA")]
+[node name="TemplatePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("1_oe50t")
-CAMERA = NodePath("../Camera3D")
+camera = NodePath("../Camera3D")
 camera_offset = Vector3(0, 10, 10)
 SPEED = 10.0
 
@@ -549,11 +516,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458892, 0, 0.398338)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TemplatePlayer/PickUp"]
 shape = SubResource("SphereShape3D_rg1sy")
 
-[node name="PlayerInput" type="MultiplayerSynchronizer" parent="TemplatePlayer"]
-root_path = NodePath(".")
-replication_config = SubResource("SceneReplicationConfig_fcge4")
-script = ExtResource("8_ktc0j")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 size = 20.0
@@ -561,11 +523,24 @@ size = 20.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryPlayer" parent="CanvasLayer" instance=ExtResource("7_u5nvg")]
+visible = false
+offset_left = -136.0
+offset_top = -128.0
+offset_right = 136.0
+offset_bottom = 128.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_ixyqm")
+replication_config = SubResource("SceneReplicationConfig_lx0wk")
+
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath(".")
+replication_config = SubResource("SceneReplicationConfig_pfkvo")
+script = ExtResource("8_ktc0j")
 
 [connection signal="area_entered" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_entered"]
 [connection signal="area_exited" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_exited"]
+[connection signal="closed" from="CanvasLayer/InventoryPlayer" to="TemplatePlayer" method="_on_inventory_player_closed"]
+[connection signal="opened" from="CanvasLayer/InventoryPlayer" to="TemplatePlayer" method="_on_inventory_player_opened"]

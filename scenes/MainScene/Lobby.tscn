@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqbb5rxwd64ps"]
+
+[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://sky_box/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_8qdxc"]
+[ext_resource type="PackedScene" uid="uid://dkwtqh8oyg4tm" path="res://Models/house.glb" id="2_lnylc"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2xnew"]
+panorama = ExtResource("1_8qdxc")
+
+[sub_resource type="Sky" id="Sky_j7yqg"]
+sky_material = SubResource("PanoramaSkyMaterial_2xnew")
+
+[sub_resource type="Environment" id="Environment_xei3d"]
+background_mode = 2
+sky = SubResource("Sky_j7yqg")
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.07
+fog_density = 0.0205
+fog_sky_affect = 0.442
+
+[node name="Lobby" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xei3d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.537898, 0.226168, -0.812105, 0.0761429, 0.946367, 0.313992, 0.839564, -0.230732, 0.491828, -9.86655, 4.17174, -3.19163)
+
+[node name="house" parent="." instance=ExtResource("2_lnylc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.18019, 4.76837e-07, -9.39248)
