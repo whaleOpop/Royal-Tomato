@@ -492,6 +492,9 @@ properties/12/replication_mode = 1
 properties/13/path = NodePath("TemplatePlayer/Hand:scale")
 properties/13/spawn = true
 properties/13/replication_mode = 1
+properties/14/path = NodePath("TemplatePlayer:up_direction")
+properties/14/spawn = true
+properties/14/replication_mode = 1
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -561,11 +564,11 @@ size = 20.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryPlayer" parent="CanvasLayer" instance=ExtResource("7_u5nvg")]
+visible = false
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="ServerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ixyqm")
 
-[connection signal="area_entered" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_entered"]
-[connection signal="area_exited" from="TemplatePlayer/PickUp" to="TemplatePlayer" method="_on_pick_up_area_exited"]
+[connection signal="area_entered" from="TemplatePlayer/PickUp" to="TemplatePlayer/PlayerInput" method="_on_pick_up_area_entered"]

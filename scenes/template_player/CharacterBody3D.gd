@@ -28,17 +28,19 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var inventory: Inventory
 var current_weapon_slot: int = -1  # Отслеживаем текущий слот оружия
 
+func is_local_player() -> bool:
+	return player == multiplayer.get_unique_id()
+
 func _ready():
-	if player == multiplayer.get_unique_id():
+	if is_local_player():
 		if CAMERA:
 			CAMERA.current = true
-
+		if input:
+			inventory = input.inventory
+			invVisual.inventory=inventory
+		else:
+			print_debug("Input node is null!")
 	add_to_group("player")
-
-	if input:
-		inventory = input.inventory
-	else:
-		print_debug("Input node is null!")
 
 	# Инициализируем машину состояний
 	state_machine = {
@@ -58,7 +60,7 @@ func _ready():
 func _process(delta):
 	if CAMERA:
 		update_camera(delta)
-
+	
 	if current_state:
 		current_state.update(self, delta)
 
@@ -66,21 +68,22 @@ func _process(delta):
 		rotate_towards_mouse()
 
 	# Управление открытием/закрытием инвентаря
-	if input and input.inventory_open:
-		if current_state != state_machine["INVENTORY"]:
-			if invVisual:
-				invVisual.open()
-			change_state("INVENTORY")
-	else:
-		if current_state == state_machine["INVENTORY"]:
-			if invVisual:
-				invVisual.close()
-			change_state("IDLE")
+	if is_local_player():
+		if input and input.inventory_open:
+			if current_state != state_machine["INVENTORY"]:
+				if invVisual:
+					invVisual.open()
+				change_state("INVENTORY")
+		else:
+			if current_state == state_machine["INVENTORY"]:
+				if invVisual:
+					invVisual.close()
+				change_state("IDLE")
 
 	# Обработка переключения оружия на основе ввода
 	if input and input.weapon_slot >= 0:
 		_switch_weapon(input.weapon_slot)
-
+	
 	if hand.get_children():
 		var gun = hand.get_child(0)
 		if input.single_shooting:
@@ -93,6 +96,7 @@ func _process(delta):
 		if Input.is_action_pressed("ui_fire") and gun.current_mode == gun.FireMode.AUTO:
 			gun.auto_fire()
 			input.auto_shooting = false
+
 
 		if Input.is_action_just_released("ui_fire"):
 			# Сброс флага для одиночного режима
@@ -201,7 +205,7 @@ func handle_physics(delta):
 
 @rpc("call_local")
 func sync_camera_rotation_rpc(rotation_y: float):
-	if CAMERA:
+	if CAMERA and CAMERA.rotation_degrees.y != rotation_y:
 		CAMERA.rotation_degrees.y = rotation_y
 		rotation_degrees.y = rotation_y
 
@@ -223,16 +227,13 @@ func _switch_weapon(slot_index):
 			hand.add_child(gun)
 
 			# Синхронизируем переключение оружия на всех клиентах
-			sync_weapon_switch_rpc(slot_index)
+		
 		else:
 			print_debug("No gun available in slot: ", slot_index)
 	else:
 		print_debug("Hand node is null or invalid!")
 
-@rpc("call_local")
-func sync_weapon_switch_rpc(slot_index):
-	_switch_weapon(slot_index)
-	
+
 func change_state(new_state: String):
 	if current_state:
 		current_state.exit(self)  # Вызываем метод выхода из текущего состояния

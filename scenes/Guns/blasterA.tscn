@@ -5,8 +5,7 @@
 
 [node name="blasterA2" instance=ExtResource("1_86cmd")]
 script = ExtResource("2_tbfd3")
-fire_rate = 0.1
-current_mode = 2
+current_mode = 1
 
 [node name="RayCastNode" type="RayCast3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108811, 0.424542)

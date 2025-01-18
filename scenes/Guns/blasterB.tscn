@@ -1,5 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://5v6ieuf5xnwl"]
+[gd_scene load_steps=3 format=3 uid="uid://5v6ieuf5xnwl"]
 
 [ext_resource type="PackedScene" uid="uid://d4nrihjxspbuu" path="res://Models/guns/blasterB.glb" id="1_n5t5w"]
+[ext_resource type="Script" path="res://scenes/Guns/blaster_a.gd" id="2_ryuuo"]
 
 [node name="blasterB2" instance=ExtResource("1_n5t5w")]
+script = ExtResource("2_ryuuo")
+
+[node name="RayCastNode" type="RayCast3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0520698, 0.197577)
+target_position = Vector3(0, 0, 20)

@@ -1,7 +1,7 @@
 extends Node
 
 const port = 135
-
+@onready var ip_text = $CanvasLayer/Control/HBoxContainer/Control3/LineEdit
 func _on_host_pressed():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(135)
@@ -10,7 +10,7 @@ func _on_host_pressed():
 
 
 func _on_join_pressed():
-	var ip = "127.0.0.1"
+	var ip = ip_text.text
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip,port)
 	multiplayer.multiplayer_peer = peer

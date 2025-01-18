@@ -39,7 +39,7 @@ func _process(delta: float):
 	position.y += bobbing_amplitude * sin(bobbing_timer)
 
 func collect(inventory: Inventory):
-	var can_collect = false  # Initialize a flag to determine if the item can be collected
+	var can_collect = true  #е Initialize a flag to determine if the item can be collected
 
 	if itemRes.type == "Supplies":
 		can_collect = not inventory.isSuppliesFull()

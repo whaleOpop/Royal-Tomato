@@ -4,7 +4,7 @@ signal opened
 signal closed
 var isOpen: bool = false
 
-@onready var inventory: Inventory = preload("res://scenes/Inventory/ui/inventory/Inventory.tres")
+var inventory: Inventory
 @onready var small_slots:Array = $HBoxContainer/LargestContainer/SmallContainer.get_children()
 @onready var middle_slots:Array = $HBoxContainer/MiddleContainer.get_children()
 @onready var large_slots:Array = $HBoxContainer/LargeContainer.get_children()
@@ -18,6 +18,7 @@ var oldIndex: int = -1
 var locked:bool=false
 
 func _ready():
+	
 	connectSlotsSmall()
 	connectSlotsMiddle()
 	connectSlotsLarge()
@@ -87,6 +88,7 @@ func updateGuns():
 	pass
 
 func open():
+	
 	visible=true
 	isOpen=true
 	opened.emit()
